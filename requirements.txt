@@ -1,0 +1,10 @@
+pandas
+numpy
+seaborn
+torch
+# tensorflow
+scikit-learn
+scipy
+opencv-python
+kaggle
+librosa

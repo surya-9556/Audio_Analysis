@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Prediction</title>
+    <!-- Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: url('background_pattern.jpg') repeat;
+            font-family: 'Arial', sans-serif;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: transform 0.3s ease-in-out;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            transform: scale(1.1);
+        }
+        .social-icons {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        .social-icons li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .social-icons li a {
+            color: #333;
+            font-size: 20px;
+            transition: color 0.3s ease-in-out;
+        }
+        .social-icons li a:hover {
+            color: #007bff;
+        }
+        .prediction-tile {
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Audio Prediction</h1>
+        <form class="mt-4" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload Audio File:</label>
+                <input type="file" class="form-control-file" id="file" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        <div class="prediction-tile">
+            {% if gender %}
+                <h2>Gender Prediction: {{ gender }}</h2>
+            {% endif %}
+            {% if age %}
+                <h2>Age Prediction: {{ age }}</h2>
+            {% endif %}
+            {% if accent %}
+                <h2>Accent Prediction: {{ accent }}</h2>
+            {% endif %}
+            {% if not gender and not age and not accent %}
+                <p>No predictions available.</p>
+            {% endif %}
+        </div>
+    </div>
+    <footer class="mt-5" style="text-align: center;">
+        <div style="display: flex; flex-direction: column;">
+            <p>© 2024 Audio Prediction. All rights reserved.</p>
+            <ul class="social-icons">
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
